@@ -1,45 +1,32 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
-
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+// import HomeScreen from '../../ApnaVayypaar/screens/HomeScreen';
+import SettingsScreen from '../../ApnaVayypaar/screens/SettingsScreen';
+import SplashScreen from '../../ApnaVayypaar/screens/SplashScreen'
+import SelectStoneScreen from '../../ApnaVayypaar/screens/SelectStoneScreen'
+import { Stack } from 'expo-router';
+import SheetScreen from '../../ApnaVayypaar/screens/SheetScreen'
+import Form from '../../ApnaVayypaar/screens/Form';
+import AllSheetsScreen from '../../ApnaVayypaar/screens/AllSheetsScreen';
+import  SheetDeatilScreen from '../../ApnaVayypaar/screens/SheetScreen';
+import SheetPage from '../../ApnaVayypaar/screens/SheetPage'
+const Tab = createBottomTabNavigator();
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
+    <Tab.Navigator>
+     <Tab.Screen name="SelectStone" component={SplashScreen} />
+      {/* <Tab.Screen name="Home1" component={HomeScreen} /> */}
+      <Tab.Screen name="Home2" component={SelectStoneScreen} />
+      <Tab.Screen name="Sheets" component={SheetScreen} />
+      <Tab.Screen name="Form" component={Form} />
+      <Tab.Screen name="SheetDetail" component={SheetDeatilScreen} />
+      <Tab.Screen name='AllSheets' component={AllSheetsScreen}/>
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Sheet" component={SheetPage} />
+    </Tab.Navigator>
+    
   );
 }
+// app/_layout.tsx
+
+

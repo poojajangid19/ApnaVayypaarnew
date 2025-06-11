@@ -1,16 +1,15 @@
-// app/+not-found.tsx
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function NotFound() {
+export default function SettingsScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>404 - Page Not Found</Text>
+      <Text style={styles.text}>Settings Page</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   text: { fontSize: 18, fontWeight: 'bold' },
 });
